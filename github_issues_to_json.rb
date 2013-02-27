@@ -114,13 +114,11 @@ class GH
     comments.each do |comment|
       comment["issue_id"] = comment.issue_url.split("/")[-1].to_i
       num = comment["issue_id"]
-      puts(num.class)
       @comments[num].push( comment )
     end
     issues = @issues
     issues.each do |issue|
       mynum = issue['number']
-      puts(mynum.class)
       issue["comments"] = @comments[mynum]
     end
     return @comments
