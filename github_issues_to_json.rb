@@ -51,7 +51,7 @@ class GH
     @repo = repo
     @client = Octokit::Client.new(:login => USERNAME, :password => PASSWORD)
     @comments = {}
-    @comments.default = []
+    #@comments.default = []
   end
 
   def get_issues()
@@ -114,11 +114,17 @@ class GH
     comments.each do |comment|
       comment["issue_id"] = comment.issue_url.split("/")[-1].to_i
       num = comment["issue_id"]
-      @comments[num].push( comment )
+      if (!@comments[num])
+        @comments[num] = []
+      end
+      @comments[num] = @comments[num] + [ comment ]
     end
     issues = @issues
     issues.each do |issue|
       mynum = issue['number']
+      if (!@comments[mynum])
+        @comments[mynum] = []
+      end
       issue["comments"] = @comments[mynum]
     end
     return @comments
@@ -142,6 +148,7 @@ class GH
       issue["reportedBy"] = issue["user"]["login"]
       issue["owner"] = ((issue["assignee"])?issue["assignee"]["login"]:"")
       issue["content"] = issue["body"]
+      puts(issue["comments"].length.to_s)
       issue["comments"].each { |comment| 
         comment["content"] = comment["body"]
         comment["author"] = comment["user"]["login"]
@@ -154,9 +161,10 @@ class GH
   end
 end
 
-gh = GH.new(REPO)
-issues = gh.get_issues()
-comments = gh.get_comments()
+gh = GH.new(REPO);
+issues = gh.get_issues();
+comments = gh.get_comments();
+1
 issues_json = JSON.pretty_generate( issues )
 File.new("issues.json","w").write( issues_json )
 comments_json = JSON.pretty_generate( comments )
