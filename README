@@ -1,0 +1,12 @@
+Dev Topic Study
+
+bug-tracker-to-json.pl - convert an issues.xml to an appropriate format
+git-grep.pl - convert a git repo to an appropriate format
+lda_from_json.py - run lda on issues and commits 
+lda.py - lda lib
+lda-to-csv.pl - convert lda output to csv for R
+plots.R - R to make plots and run the study
+project.sh - how to extract a project in the data directory
+survey/gen-survey.pl - generate a survey
+survey/odt2pdf.sh - convert odt to pdf
+survey/survey-template.odt - survey template
