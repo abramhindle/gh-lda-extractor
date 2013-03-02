@@ -1,4 +1,16 @@
-Dev Topic Study
+GitHub LDA Summarizer
+
+=== Use ===
+
+To mirror the repo:
+
+bash gh.sh USERNAME / REPO 
+
+=== Deps ===
+
+A lot of libraries :(
+
+=== Files ===
 
 bug-tracker-to-json.pl - convert an issues.xml to an appropriate format
 git-grep.pl - convert a git repo to an appropriate format
@@ -7,6 +19,21 @@ lda.py - lda lib
 lda-to-csv.pl - convert lda output to csv for R
 plots.R - R to make plots and run the study
 project.sh - how to extract a project in the data directory
-survey/gen-survey.pl - generate a survey
-survey/odt2pdf.sh - convert odt to pdf
-survey/survey-template.odt - survey template
+
+=== LICENSE ===
+
+In general:
+
+(C) 2013 Abram Hindle
+
+All code here is licensed under the Apache 2.0 unless otherwise specified.
+
+Furthermore if you are an academic. Cite our work! 
+
+@inproceedings{hindle2012rri,
+	Author = {Abram Hindle and Christian Bird and Thomas Zimmermann and Nachiappan Nagappan},
+	Title = {Relating Requirements to Implementation via Topic Analysis: Do Topics Extracted from Requirements Make Sense to Managers and Developers?},
+	Booktitle = {Proceedings of the 28th IEEE International Conference on Software Maintenance},
+	Year = {2012},
+	Publisher = {IEEE}
+}
